@@ -9,26 +9,25 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.udemy</groupId>
-    <artifactId>spring-boot-spring-core</artifactId>
+    <artifactId>spring-boot-hibernate-jpa-crud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging><!-- default packaging -->
-    <name>02-spring-boot-spring-core</name>
-    <description>02-spring-boot-spring-core</description>
+    <name>03-spring-boot-hibernate-jpa-crud</name>
+    <description>03-spring-boot-hibernate-jpa-crud</description>
     <properties>
         <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
-            <optional>true</optional>
         </dependency>
+
     </dependencies>
 
     <build>
