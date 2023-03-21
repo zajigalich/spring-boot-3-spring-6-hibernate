@@ -24,7 +24,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    @Transactional
+    //@Transactional - no need for transaction support because we are using a query
     public Student findById(Long id) {
         return entityManager.find(Student.class, id);
     }
@@ -32,7 +32,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     @Transactional
     public List<Student> findAll() {
-        return entityManager.createQuery("select Student from Student ", Student.class).getResultList();
+        return entityManager.createQuery("select s from Student s", Student.class).getResultList();
     }
 
     @Override
