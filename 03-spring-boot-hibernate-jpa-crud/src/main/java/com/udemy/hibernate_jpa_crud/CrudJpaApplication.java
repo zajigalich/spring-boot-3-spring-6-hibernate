@@ -22,24 +22,46 @@ public class CrudJpaApplication {
         return runner -> {
             //createStudent(studentDao);
             //createMultipleStudents(studentDao);
-            readStudent(studentDao);
-            readAllStudents(studentDao);
+            //readStudent(studentDao);
+            //readAllStudents(studentDao);
+            //readStudentByLastName(studentDao);
+            updateStudent(studentDao);
         };
+    }
+
+    private void updateStudent(StudentDao studentDao) {
+
+        Long studentId = 2L;
+        System.out.println("Updating lastName of student with the id of " + studentId + " to 'Applebum'");
+
+        Student detachedStudent = studentDao.findById(studentId);
+
+        detachedStudent.setLastName("Applebum");
+
+        studentDao.update(detachedStudent);
+    }
+
+    private void readStudentByLastName(StudentDao studentDao) {
+        String searchedLastName = "man";
+
+        System.out.println("Reading student with the lastName like '" + searchedLastName + "'");
+
+        List<Student> students = studentDao.findByLastName(searchedLastName);
+
+        students.forEach(System.out::println);
     }
 
     private void readAllStudents(StudentDao studentDao) {
         System.out.println("Reading all students saved in database");
 
-
         List<Student> students = studentDao.findAll();
 
-        System.out.println(students);
+        students.forEach(System.out::println);
     }
 
     private void readStudent(StudentDao studentDao) {
-        System.out.println("Reading student with the id of 1");
-
-        Long id = 1L;
+        Long id = 2L;
+        System.out.println("Reading student with the id of " + id);
 
         Student student = studentDao.findById(id);
 

@@ -24,25 +24,25 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    //@Transactional - no need for transaction support because we are using a query
+    //@Transactional - no need for transaction support because we are using a read-only query
     public Student findById(Long id) {
         return entityManager.find(Student.class, id);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public List<Student> findAll() {
-        return entityManager.createQuery("select s from Student s", Student.class).getResultList();
+        return entityManager.createQuery("select s from Student s order by s.lastName", Student.class).getResultList();
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public List<Student> findByLastName(String lastName) {
 
         TypedQuery<Student> query = entityManager
-                .createQuery("select Student from Student where lastName like :theLastName", Student.class);
+                .createQuery("select s from Student s where lower(s.lastName) like :theLastName", Student.class);
 
-        query.setParameter("theLastName", lastName);
+        query.setParameter("theLastName", "%" + lastName.toLowerCase() + "%");
 
         return query.getResultList();
     }
@@ -50,18 +50,20 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     @Transactional
     public void update(Student student) {
-        entityManager.refresh(student);
+        entityManager.merge(student);
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
-        //entityManager.remove();
+        TypedQuery<Student> query = entityManager.createQuery("delete from Student where id=:theId", Student.class);
+        query.setParameter("theId", id);
+        query.executeUpdate();
     }
 
     @Override
     @Transactional
     public void deleteAll() {
-
+        entityManager.createQuery("delete from Student ").executeUpdate();
     }
 }
