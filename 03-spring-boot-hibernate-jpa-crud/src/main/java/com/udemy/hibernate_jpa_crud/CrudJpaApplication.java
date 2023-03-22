@@ -20,13 +20,34 @@ public class CrudJpaApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDao studentDao) { //autowiring StudentDao
         return runner -> {
-            //createStudent(studentDao);
-            //createMultipleStudents(studentDao);
-            //readStudent(studentDao);
-            //readAllStudents(studentDao);
-            //readStudentByLastName(studentDao);
+            createStudent(studentDao);
+
+            createMultipleStudents(studentDao);
+
+            readStudent(studentDao);
+
+            readAllStudents(studentDao);
+
+            readStudentByLastName(studentDao);
+
             updateStudent(studentDao);
+
+            deleteStudent(studentDao);
+
+            deleteAllStudents(studentDao);
         };
+    }
+
+    private void deleteAllStudents(StudentDao studentDao) {
+        System.out.println("Deleting all students from table");
+        System.out.println("Deleted amount: " + studentDao.deleteAll());
+    }
+
+    private void deleteStudent(StudentDao studentDao) {
+        Long id = 2L;
+        System.out.println("Deleting student with the id of " + id);
+
+        studentDao.delete(id);
     }
 
     private void updateStudent(StudentDao studentDao) {
@@ -34,11 +55,13 @@ public class CrudJpaApplication {
         Long studentId = 2L;
         System.out.println("Updating lastName of student with the id of " + studentId + " to 'Applebum'");
 
-        Student detachedStudent = studentDao.findById(studentId);
+        Student student = studentDao.findById(studentId);
 
-        detachedStudent.setLastName("Applebum");
+        student.setLastName("Applebum");
 
-        studentDao.update(detachedStudent);
+        studentDao.update(student);
+
+        System.out.println(student);
     }
 
     private void readStudentByLastName(StudentDao studentDao) {

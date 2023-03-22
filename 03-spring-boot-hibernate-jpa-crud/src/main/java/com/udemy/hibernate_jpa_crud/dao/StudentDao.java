@@ -18,6 +18,6 @@ public interface StudentDao {
 
     void delete(Long id);
 
-    void deleteAll();
+    int deleteAll();
 
 }
