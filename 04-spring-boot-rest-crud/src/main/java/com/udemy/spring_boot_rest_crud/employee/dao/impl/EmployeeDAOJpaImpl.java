@@ -1,6 +1,6 @@
 package com.udemy.spring_boot_rest_crud.employee.dao.impl;
 
-import com.udemy.spring_boot_rest_crud.employee.dao.EmployeeDao;
+import com.udemy.spring_boot_rest_crud.employee.dao.EmployeeDAO;
 import com.udemy.spring_boot_rest_crud.employee.entity.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDAOJpaImpl implements EmployeeDAO {
 
     @PersistenceContext
     private EntityManager entityManager;

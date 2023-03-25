@@ -4,7 +4,7 @@ import com.udemy.spring_boot_rest_crud.employee.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDao {
+public interface EmployeeDAO {
 
     List<Employee> findAll();
 
