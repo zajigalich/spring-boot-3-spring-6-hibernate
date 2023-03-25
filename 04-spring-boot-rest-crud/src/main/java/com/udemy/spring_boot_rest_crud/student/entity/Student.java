@@ -1,4 +1,4 @@
-package com.udemy.spring_boot_rest_crud.entity;
+package com.udemy.spring_boot_rest_crud.student.entity;
 
 public class Student {
 

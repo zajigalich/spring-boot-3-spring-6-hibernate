@@ -1,4 +1,4 @@
-package com.udemy.spring_boot_rest_crud.exception;
+package com.udemy.spring_boot_rest_crud.student.exception;
 
 public class StudentNotFoundException extends RuntimeException {
     public StudentNotFoundException(String message) {

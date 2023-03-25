@@ -1,17 +1,17 @@
-package com.udemy.spring_boot_rest_crud.entity;
+package com.udemy.spring_boot_rest_crud.student.entity;
 
 public class StudentErrorResponse {
     private int code;
     private String message;
-    private long timestamp;
+    private long timeStamp;
 
     public StudentErrorResponse() {
     }
 
-    public StudentErrorResponse(int code, String message, long timestamp) {
+    public StudentErrorResponse(int code, String message, long timeStamp) {
         this.code = code;
         this.message = message;
-        this.timestamp = timestamp;
+        this.timeStamp = timeStamp;
     }
 
     public int getCode() {
@@ -30,12 +30,12 @@ public class StudentErrorResponse {
         this.message = message;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public long getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class StudentErrorResponse {
         return "StudentErrorResponse{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
-                ", timestamp=" + timestamp +
+                ", timestamp=" + timeStamp +
                 '}';
     }
 }

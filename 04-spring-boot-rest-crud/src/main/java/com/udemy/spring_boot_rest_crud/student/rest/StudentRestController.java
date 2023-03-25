@@ -1,7 +1,7 @@
-package com.udemy.spring_boot_rest_crud.rest;
+package com.udemy.spring_boot_rest_crud.student.rest;
 
-import com.udemy.spring_boot_rest_crud.entity.Student;
-import com.udemy.spring_boot_rest_crud.exception.StudentNotFoundException;
+import com.udemy.spring_boot_rest_crud.student.entity.Student;
+import com.udemy.spring_boot_rest_crud.student.exception.StudentNotFoundException;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/students")
+@RequestMapping("/api/students")
 public class StudentRestController {
 
     private List<Student> students;

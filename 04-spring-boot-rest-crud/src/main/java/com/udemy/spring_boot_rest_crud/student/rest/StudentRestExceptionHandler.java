@@ -1,15 +1,15 @@
-package com.udemy.spring_boot_rest_crud.rest;
+package com.udemy.spring_boot_rest_crud.student.rest;
 
 
-import com.udemy.spring_boot_rest_crud.entity.StudentErrorResponse;
-import com.udemy.spring_boot_rest_crud.exception.StudentNotFoundException;
+import com.udemy.spring_boot_rest_crud.student.entity.StudentErrorResponse;
+import com.udemy.spring_boot_rest_crud.student.exception.StudentNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class StudentRestControllerExceptionHandler {
+public class StudentRestExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exception){
