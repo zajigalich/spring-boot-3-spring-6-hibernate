@@ -43,6 +43,14 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Add dependency for Spring Data Rest
+            Provides default rest endpoints for JpaRepositories-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
