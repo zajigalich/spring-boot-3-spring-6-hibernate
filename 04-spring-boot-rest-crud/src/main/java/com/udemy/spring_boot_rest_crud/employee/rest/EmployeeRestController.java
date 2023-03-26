@@ -1,10 +1,8 @@
 package com.udemy.spring_boot_rest_crud.employee.rest;
 
-import com.udemy.spring_boot_rest_crud.employee.dao.EmployeeDAO;
 import com.udemy.spring_boot_rest_crud.employee.entity.Employee;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.udemy.spring_boot_rest_crud.employee.service.EmployeeService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,14 +10,42 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeRestController {
 
-    private final EmployeeDAO employeeDAO;
+    private final EmployeeService employeeService;
 
-    public EmployeeRestController(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeRestController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping
     public List<Employee> findAll(){
-        return employeeDAO.findAll();
+        return employeeService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Employee findById(@PathVariable Long id){
+
+        Employee employee = employeeService.findById(id);
+
+        if (employee == null) {
+            throw new RuntimeException("Employee id not found" + id);
+        }
+
+        return employee;
+    }
+
+    @PostMapping
+    public Employee save(@RequestBody Employee employee){
+        employee.setId(null);
+        return employeeService.save(employee);
+    }
+
+    @PutMapping
+    public Employee update(@RequestBody Employee employee){
+        return employeeService.save(employee);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        employeeService.deleteById(id);
     }
 }
