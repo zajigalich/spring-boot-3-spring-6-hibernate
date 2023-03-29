@@ -1,4 +1,4 @@
-USE `employee_directory`;
+USE `hb_student_tracker`;
 
 DROP TABLE IF EXISTS `roles`;
 DROP TABLE IF EXISTS `members`;
