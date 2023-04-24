@@ -23,7 +23,6 @@ public class EmployeeRestController {
 
     @GetMapping("/{id}")
     public Employee getEmployee(@PathVariable Long id){
-
         return employeeService.findById(id);
     }
 

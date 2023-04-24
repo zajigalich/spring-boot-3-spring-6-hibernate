@@ -30,7 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee save(Employee employee) {
-        employee.setId(null);
         return employeeRepository.save(employee);
     }
 
